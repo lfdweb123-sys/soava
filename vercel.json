@@ -1,9 +1,16 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/index.html", "headers": { "Content-Type": "text/html" } }
-  ]
+  "staticFiles": {
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/html; charset=UTF-8"
+          }
+        ]
+      }
+    ]
+  }
 }
