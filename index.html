@@ -7,460 +7,544 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --green-950: #071a10;
-    --green-900: #0d2b1c;
-    --green-800: #163d28;
-    --green-700: #1e5237;
-    --green-600: #276946;
-    --green-500: #2d7f54;
-    --green-400: #3a9e6a;
-    --green-200: #a3d5b8;
-    --green-100: #d4eed e;
-    --green-50:  #eef6f1;
-    --sand-100: #f5f2eb;
-    --sand-200: #e9e4d6;
-    --gray-50:  #f8fafc;
-    --gray-100: #f1f5f9;
-    --gray-200: #e2e8f0;
-    --gray-300: #cbd5e1;
-    --gray-400: #94a3b8;
-    --gray-600: #475569;
-    --gray-700: #334155;
-    --gray-800: #1e293b;
-    --gray-900: #0f172a;
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 28px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.04);
-  }
+:root {
+  --g950:#071a10; --g900:#0d2b1c; --g800:#163d28;
+  --g700:#1e5237; --g600:#276946; --g500:#2d7f54;
+  --g400:#3a9e6a; --g300:#7ec4a0; --g200:#a3d5b8;
+  --g100:#d4eed8; --g50:#eef6f1;
+  --gray-50:#f8fafc; --gray-100:#f1f5f9; --gray-200:#e2e8f0;
+  --gray-300:#cbd5e1; --gray-400:#94a3b8; --gray-500:#64748b;
+  --gray-600:#475569; --gray-700:#334155; --gray-800:#1e293b; --gray-900:#0f172a;
+  --r-sm:8px; --r-md:12px; --r-lg:18px; --r-xl:24px;
+  --sh-sm:0 1px 3px rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.03);
+  --sh-md:0 4px 16px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04);
+  --sh-lg:0 12px 40px rgba(0,0,0,.09),0 2px 8px rgba(0,0,0,.04);
+}
 
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--gray-50);
-    color: var(--gray-900);
-    line-height: 1.6;
-    font-size: 15px;
-    -webkit-font-smoothing: antialiased;
-  }
+body {
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--gray-50); color:var(--gray-900);
+  line-height:1.6; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 
-  .container { max-width: 1220px; margin: 0 auto; padding: 0 28px; }
+.container { max-width:1220px; margin:0 auto; padding:0 20px; }
 
-  /* ── NAVBAR ── */
-  .navbar {
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--gray-200);
-    position: sticky; top: 0; z-index: 200;
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.85rem 0; gap: 1.5rem;
-  }
-  .logo-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .logo-icon {
-    width: 38px; height: 38px; border-radius: 10px;
-    background: var(--green-900);
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 16px;
-  }
-  .logo-text { display: flex; flex-direction: column; gap: 1px; }
-  .logo-name { font-size: 1.05rem; font-weight: 700; color: var(--green-900); letter-spacing: -0.3px; }
-  .logo-sub  { font-size: 0.7rem; font-weight: 400; color: var(--gray-600); letter-spacing: 0.3px; text-transform: uppercase; }
+/* ── NAVBAR ── */
+.navbar {
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--gray-200);
+  position:sticky; top:0; z-index:500;
+}
+.nav-inner {
+  display:flex; align-items:center; justify-content:space-between;
+  height:62px;
+}
+.logo-mark { display:flex; align-items:center; gap:11px; text-decoration:none; flex-shrink:0; }
+.logo-icon {
+  width:36px; height:36px; border-radius:9px;
+  background:var(--g900); display:flex; align-items:center; justify-content:center;
+  color:white; font-size:15px;
+}
+.logo-name { font-size:1rem; font-weight:700; color:var(--g900); letter-spacing:-.3px; display:block; }
+.logo-sub  { font-size:.65rem; font-weight:400; color:var(--gray-500); letter-spacing:.3px; text-transform:uppercase; display:block; }
 
-  .nav-links { display: flex; align-items: center; gap: 0.25rem; }
-  .nav-links a {
-    text-decoration: none; font-size: 0.875rem; font-weight: 500;
-    color: var(--gray-700); padding: 6px 14px; border-radius: 8px;
-    transition: all 0.15s ease;
-  }
-  .nav-links a:hover { background: var(--gray-100); color: var(--green-700); }
-  .nav-cta {
-    background: var(--green-900); color: white !important;
-    padding: 8px 18px !important; border-radius: 40px !important;
-    display: inline-flex; align-items: center; gap: 8px;
-    font-weight: 600 !important;
-    transition: background 0.15s ease !important;
-  }
-  .nav-cta:hover { background: var(--green-700) !important; }
-  .nav-cta i { font-size: 0.8rem; }
+.nav-links { display:flex; align-items:center; gap:.2rem; }
+.nav-links a {
+  text-decoration:none; font-size:.85rem; font-weight:500;
+  color:var(--gray-700); padding:6px 13px; border-radius:8px;
+  transition:all .15s;
+}
+.nav-links a:hover { background:var(--gray-100); color:var(--g700); }
+.nav-cta {
+  background:var(--g900) !important; color:white !important;
+  padding:7px 16px !important; border-radius:40px !important;
+  display:inline-flex; align-items:center; gap:7px; font-weight:600 !important;
+}
+.nav-cta:hover { background:var(--g700) !important; }
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(140deg, #eef7f2 0%, #dfeee7 55%, #d1e8da 100%);
-    border-radius: var(--radius-xl);
-    margin: 2rem 0;
-    overflow: hidden;
-    border: 1px solid #c8e0d0;
-    position: relative;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(39,105,70,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
+/* Hamburger */
+.hamburger {
+  display:none; flex-direction:column; justify-content:center; align-items:center;
+  gap:5px; width:40px; height:40px; border-radius:9px;
+  border:1px solid var(--gray-200); background:white;
+  cursor:pointer; flex-shrink:0; transition:background .15s;
+}
+.hamburger:hover { background:var(--gray-100); }
+.hamburger span {
+  display:block; width:20px; height:2px;
+  background:var(--gray-700); border-radius:2px;
+  transition:transform .25s, opacity .25s;
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+/* Mobile drawer */
+.nav-drawer {
+  position:fixed; top:62px; left:0; right:0; bottom:0;
+  background:white; z-index:490;
+  flex-direction:column;
+  border-top:1px solid var(--gray-200);
+  overflow-y:auto;
+  padding:1rem 16px 2rem;
+  gap:.25rem;
+  display:none;
+}
+.nav-drawer.open { display:flex; }
+.nav-drawer a {
+  text-decoration:none; font-size:.95rem; font-weight:500;
+  color:var(--gray-800); padding:13px 14px; border-radius:10px;
+  display:flex; align-items:center; gap:12px;
+  transition:all .15s;
+}
+.nav-drawer a:hover { background:var(--g50); color:var(--g700); }
+.nav-drawer a i { width:20px; color:var(--g600); font-size:.85rem; text-align:center; }
+.drawer-divider { height:1px; background:var(--gray-100); margin:.4rem 0; }
+.drawer-cta {
+  background:var(--g900) !important; color:white !important;
+  border-radius:12px !important; justify-content:center !important;
+  margin-top:.3rem; font-size:1rem !important; padding:14px !important;
+}
+.drawer-cta i { color:white !important; }
+.drawer-cta:hover { background:var(--g700) !important; }
+
+/* ── HERO ── */
+.hero {
+  background:linear-gradient(140deg,#eef7f2 0%,#dfeee7 55%,#d1e8da 100%);
+  border-radius:var(--r-xl); margin:1.5rem 0;
+  border:1px solid #c8e0d0; overflow:hidden;
+}
+.hero-inner {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:2rem; align-items:center; padding:2.8rem 2.5rem;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:7px;
+  background:rgba(39,105,70,.12); color:var(--g700);
+  padding:5px 13px; border-radius:40px;
+  font-size:.73rem; font-weight:600; margin-bottom:1rem;
+}
+.hero-title {
+  font-size:2.4rem; font-weight:800; line-height:1.15;
+  color:var(--g950); letter-spacing:-.7px; margin-bottom:.9rem;
+}
+.hero-desc {
+  font-size:.925rem; color:var(--g800); line-height:1.7;
+  margin-bottom:1.6rem;
+}
+.btn-row { display:flex; gap:.7rem; flex-wrap:wrap; align-items:center; }
+.btn-primary {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--g900); color:white;
+  padding:11px 22px; border-radius:40px;
+  font-size:.875rem; font-weight:600; text-decoration:none;
+  transition:background .15s;
+}
+.btn-primary:hover { background:var(--g700); }
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:8px;
+  border:1.5px solid var(--g700); color:var(--g800);
+  padding:10px 20px; border-radius:40px;
+  font-size:.875rem; font-weight:500; text-decoration:none;
+  transition:all .15s; background:transparent;
+}
+.btn-ghost:hover { background:rgba(39,105,70,.07); }
+.hero-visual {
+  background:linear-gradient(135deg,#c0dbc9,#a5c9b5);
+  border-radius:var(--r-lg); min-height:240px;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:10px; color:var(--g900);
+  border:1px solid rgba(39,105,70,.15);
+}
+.hero-visual i { font-size:2.2rem; opacity:.45; }
+.hero-visual p { font-size:.82rem; font-weight:500; opacity:.65; }
+
+/* ── SECTION HEADERS ── */
+.section-head { margin:2.2rem 0 1rem; }
+.section-eyebrow {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:.68rem; font-weight:600; letter-spacing:.9px;
+  text-transform:uppercase; color:var(--g600); margin-bottom:5px;
+}
+.section-title { font-size:1.45rem; font-weight:700; color:var(--gray-900); letter-spacing:-.3px; }
+
+/* ── COMMUNE BANNER ── */
+.commune-banner {
+  background:white; border:1px solid var(--gray-200);
+  border-radius:var(--r-lg); padding:1.2rem 1.4rem;
+  margin:1.2rem 0; display:flex; align-items:center;
+  gap:1rem; box-shadow:var(--sh-sm);
+}
+.commune-icon {
+  width:44px; height:44px; background:var(--g50);
+  border-radius:11px; display:flex; align-items:center;
+  justify-content:center; color:var(--g600); font-size:1.1rem;
+  border:1px solid #c8ddd2; flex-shrink:0;
+}
+.commune-banner p { font-size:.875rem; color:var(--gray-700); line-height:1.6; }
+.commune-banner strong { color:var(--gray-900); }
+
+/* ── NEWS GRID ── */
+.news-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.1rem; margin-bottom:.5rem;
+}
+.news-card {
+  background:white; border-radius:var(--r-lg); overflow:hidden;
+  border:1px solid var(--gray-200); box-shadow:var(--sh-sm);
+  display:flex; flex-direction:column;
+  transition:box-shadow .2s, transform .2s;
+}
+.news-card:hover { box-shadow:var(--sh-lg); transform:translateY(-3px); }
+.news-thumb {
+  height:140px; display:flex; align-items:center;
+  justify-content:center; font-size:1.7rem;
+}
+.news-thumb.green { background:linear-gradient(135deg,#b6d9c4,#cdeadb); color:var(--g700); }
+.news-thumb.blue  { background:linear-gradient(135deg,#bdd4e7,#d5e8f3); color:#1a6090; }
+.news-thumb.amber { background:linear-gradient(135deg,#e8d5b0,#f3e6cd); color:#8a5a10; }
+.news-body { padding:1rem 1.15rem; flex:1; display:flex; flex-direction:column; gap:5px; }
+.news-meta { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+.news-date { font-size:.7rem; font-weight:600; color:var(--g600); display:flex; align-items:center; gap:4px; }
+.news-date i { font-size:.6rem; }
+.news-tag {
+  font-size:.62rem; font-weight:600; padding:2px 7px;
+  border-radius:20px; background:var(--gray-100); color:var(--gray-600);
+  text-transform:uppercase; letter-spacing:.3px;
+}
+.news-card h3 { font-size:.88rem; font-weight:600; color:var(--gray-800); line-height:1.4; }
+.news-card p  { font-size:.8rem; color:var(--gray-600); line-height:1.55; }
+.news-link {
+  display:inline-flex; align-items:center; gap:5px;
+  font-size:.76rem; font-weight:600; color:var(--g600);
+  text-decoration:none; margin-top:auto; padding-top:6px;
+}
+.news-link i { font-size:.6rem; transition:transform .15s; }
+.news-card:hover .news-link i { transform:translateX(3px); }
+
+/* ── QUICK ACCESS ── */
+.quick-grid { display:flex; flex-wrap:wrap; gap:.55rem; margin:.8rem 0 2rem; }
+.q-chip {
+  display:inline-flex; align-items:center; gap:7px;
+  background:white; border:1px solid var(--gray-200);
+  border-radius:40px; padding:7px 15px;
+  font-size:.81rem; font-weight:500; color:var(--gray-700);
+  text-decoration:none; box-shadow:var(--sh-sm);
+  transition:all .15s;
+}
+.q-chip i { color:var(--g500); font-size:.77rem; }
+.q-chip:hover { border-color:var(--g400); color:var(--g800); background:var(--g50); }
+
+/* ── MODULES ── */
+.modules-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1rem; margin-bottom:2.2rem;
+}
+.module-card {
+  background:white; border:1px solid var(--gray-200);
+  border-radius:var(--r-lg); padding:1.25rem;
+  box-shadow:var(--sh-sm); display:flex; flex-direction:column; gap:7px;
+  transition:box-shadow .2s, transform .2s, border-color .2s;
+  text-decoration:none; color:inherit;
+}
+.module-card:hover { box-shadow:var(--sh-lg); transform:translateY(-2px); border-color:var(--g300); }
+.mod-head { display:flex; align-items:center; gap:9px; }
+.mod-icon {
+  width:36px; height:36px; border-radius:9px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.9rem; flex-shrink:0;
+}
+.mod-icon.g1{background:#e8f4ed;color:#1a6e40}
+.mod-icon.g2{background:#e3edf7;color:#1a5580}
+.mod-icon.g3{background:#f0e8f7;color:#6b30a0}
+.mod-icon.g4{background:#fef0e0;color:#9a5c10}
+.mod-icon.g5{background:#fce8e8;color:#a02020}
+.mod-icon.g6{background:#e8f4ed;color:#1a6e40}
+.mod-icon.g7{background:#e3edf7;color:#1a5580}
+.mod-num { font-size:.62rem; font-weight:700; color:var(--gray-400); letter-spacing:.4px; }
+.module-card h3 { font-size:.9rem; font-weight:600; color:var(--gray-800); }
+.module-card p  { font-size:.78rem; color:var(--gray-600); line-height:1.5; }
+.mod-arrow {
+  margin-top:auto; display:inline-flex; align-items:center; gap:5px;
+  font-size:.73rem; font-weight:600; color:var(--g600);
+}
+.mod-arrow i { font-size:.6rem; transition:transform .15s; }
+.module-card:hover .mod-arrow i { transform:translateX(3px); }
+
+/* ── TOFIN SECTION ── */
+.tofin-section {
+  background:var(--g900); border-radius:var(--r-xl);
+  padding:2rem 2.2rem; margin:0 0 2rem; color:white;
+  display:flex; align-items:center; justify-content:space-between; gap:2rem;
+  flex-wrap:wrap;
+}
+.tofin-content { flex:1; min-width:220px; }
+.tofin-icon-wrap {
+  width:48px; height:48px; background:rgba(255,255,255,.12);
+  border-radius:12px; display:flex; align-items:center;
+  justify-content:center; font-size:1.3rem; margin-bottom:.9rem;
+  border:1px solid rgba(255,255,255,.1);
+}
+.tofin-section h3 { font-size:1.15rem; font-weight:700; margin-bottom:.35rem; }
+.tofin-section p  { font-size:.85rem; color:rgba(255,255,255,.72); line-height:1.65; margin-bottom:.9rem; }
+.lang-pills { display:flex; gap:.45rem; flex-wrap:wrap; }
+.lang-pill {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.9); padding:5px 13px; border-radius:40px;
+  font-size:.73rem; font-weight:500;
+}
+.tofin-cta {
+  background:#f5c84a; color:var(--g900);
+  padding:12px 22px; border-radius:40px;
+  font-size:.875rem; font-weight:700; border:none; cursor:pointer;
+  display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
+  transition:background .15s; flex-shrink:0;
+}
+.tofin-cta:hover { background:#e5b83a; }
+
+/* ── BOTTOM CARDS ── */
+.bottom-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.1rem; margin-bottom:2.5rem;
+}
+.bot-card {
+  background:white; border:1px solid var(--gray-200); border-radius:var(--r-lg);
+  padding:1.35rem; box-shadow:var(--sh-sm);
+  display:flex; flex-direction:column; gap:9px;
+  transition:box-shadow .2s, transform .2s;
+  text-decoration:none; color:inherit;
+}
+.bot-card:hover { box-shadow:var(--sh-lg); transform:translateY(-2px); }
+.bot-card-icon {
+  width:40px; height:40px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center; font-size:.95rem;
+}
+.bot-card-icon.store{background:#e8f4ed;color:#1a6e40}
+.bot-card-icon.grad {background:#e8eef7;color:#1a4080}
+.bot-card-icon.cal  {background:#f7f0e8;color:#8a5a10}
+.bot-card h3 { font-size:.92rem; font-weight:600; color:var(--gray-800); }
+.bot-card p  { font-size:.8rem; color:var(--gray-600); line-height:1.55; }
+.bot-link {
+  display:inline-flex; align-items:center; gap:5px;
+  font-size:.76rem; font-weight:600; color:var(--g600); text-decoration:none;
+}
+.bot-link i { font-size:.6rem; transition:transform .15s; }
+.bot-card:hover .bot-link i { transform:translateX(3px); }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--g950); color:rgba(255,255,255,.65);
+  border-radius:22px 22px 0 0; margin-top:1.5rem; padding:2.2rem 0 1.2rem;
+}
+.footer-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1.8rem; padding-bottom:1.4rem;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.footer-col h4 {
+  font-size:.75rem; font-weight:600; color:white;
+  margin-bottom:.65rem; letter-spacing:.4px; text-transform:uppercase;
+}
+.footer-col p, .footer-col a {
+  font-size:.8rem; color:rgba(255,255,255,.55);
+  text-decoration:none; display:block; margin-bottom:3px; line-height:1.6;
+}
+.footer-col a:hover { color:var(--g300); }
+.social-row { display:flex; gap:8px; margin:.5rem 0; }
+.social-btn {
+  width:30px; height:30px; border-radius:7px;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,.65); font-size:.8rem; text-decoration:none;
+  transition:background .15s;
+}
+.social-btn:hover { background:var(--g600); color:white; }
+.footer-bottom {
+  text-align:center; padding-top:1.1rem;
+  font-size:.72rem; color:rgba(255,255,255,.3);
+}
+
+/* ── TOFIN FLOAT + MODAL ── */
+.tofin-float-btn {
+  position:fixed; bottom:24px; right:24px;
+  width:52px; height:52px; border-radius:52px;
+  background:var(--g900); color:white; border:none;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.25rem; cursor:pointer; z-index:600;
+  box-shadow:0 8px 24px rgba(14,45,28,.3);
+  transition:transform .2s, background .15s;
+}
+.tofin-float-btn:hover { background:var(--g700); transform:scale(1.05); }
+
+.tofin-modal {
+  position:fixed; bottom:88px; right:24px;
+  background:white; border-radius:var(--r-lg);
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+  width:288px; z-index:600; display:none;
+  border:1px solid var(--gray-200); overflow:hidden;
+}
+.modal-header {
+  background:var(--g900); color:white;
+  padding:13px 15px; display:flex; align-items:center; justify-content:space-between;
+}
+.modal-header-left { display:flex; align-items:center; gap:9px; }
+.modal-avatar {
+  width:30px; height:30px; background:rgba(255,255,255,.15); border-radius:7px;
+  display:flex; align-items:center; justify-content:center; font-size:.85rem;
+}
+.modal-header h4 { font-size:.85rem; font-weight:600; }
+.modal-status { font-size:.67rem; color:rgba(255,255,255,.6); display:flex; align-items:center; gap:4px; }
+.status-dot { width:5px; height:5px; border-radius:50%; background:#4ade80; }
+.modal-close { background:none; border:none; color:rgba(255,255,255,.6); cursor:pointer; font-size:.85rem; }
+.modal-close:hover { color:white; }
+.modal-body { padding:13px 15px; }
+.chat-bubble {
+  background:var(--gray-100); border-radius:10px 10px 10px 3px;
+  padding:9px 11px; font-size:.8rem; color:var(--gray-700);
+  line-height:1.5; margin-bottom:11px;
+}
+.modal-langs { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:11px; }
+.modal-lang-btn {
+  display:inline-flex; align-items:center; gap:5px;
+  background:var(--g50); border:1px solid #c8ddd2; color:var(--g800);
+  padding:5px 11px; border-radius:30px; font-size:.73rem; font-weight:500;
+  cursor:pointer; transition:all .15s;
+}
+.modal-lang-btn:hover { background:var(--g600); color:white; border-color:var(--g600); }
+.modal-action {
+  background:var(--gray-50); border:1px solid var(--gray-200); border-radius:9px;
+  padding:9px 11px; font-size:.76rem; color:var(--gray-600);
+  display:flex; align-items:center; gap:7px;
+}
+.modal-action i { color:var(--g500); font-size:.8rem; }
+
+/* ══════════════════════════════
+   TABLET ≤ 1024px
+══════════════════════════════ */
+@media (max-width:1024px) {
+  .modules-grid { grid-template-columns:repeat(3,1fr); }
+  .footer-grid  { grid-template-columns:repeat(2,1fr); }
+}
+
+/* ══════════════════════════════
+   MOBILE ≤ 768px
+══════════════════════════════ */
+@media (max-width:768px) {
+  .nav-links  { display:none; }
+  .hamburger  { display:flex; }
+
+  /* Hero */
+  .hero { border-radius:var(--r-lg); margin:1rem 0; }
   .hero-inner {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2rem; align-items: center;
-    padding: 3rem;
-    position: relative;
+    grid-template-columns:1fr;
+    padding:1.6rem 1.4rem;
+    gap:1.4rem;
   }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: rgba(39,105,70,0.12); color: var(--green-700);
-    padding: 5px 14px; border-radius: 40px;
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2px;
-    margin-bottom: 1.1rem;
-  }
-  .hero-badge i { font-size: 0.7rem; }
-  .hero-title {
-    font-size: 2.5rem; font-weight: 800; line-height: 1.15;
-    color: var(--green-950); letter-spacing: -0.8px; margin-bottom: 1rem;
-  }
-  .hero-desc {
-    font-size: 0.975rem; color: var(--green-800); line-height: 1.7;
-    margin-bottom: 1.8rem; max-width: 420px;
-  }
-  .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--green-900); color: white;
-    padding: 11px 24px; border-radius: 40px;
-    font-size: 0.875rem; font-weight: 600; text-decoration: none;
-    transition: background 0.15s ease;
-  }
-  .btn-primary:hover { background: var(--green-700); }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    border: 1.5px solid var(--green-700); color: var(--green-800);
-    padding: 10px 22px; border-radius: 40px;
-    font-size: 0.875rem; font-weight: 500; text-decoration: none;
-    transition: all 0.15s ease; background: transparent;
-  }
-  .btn-ghost:hover { background: rgba(39,105,70,0.07); }
-  .hero-visual {
-    background: linear-gradient(135deg, #c0dbc9 0%, #a5c9b5 100%);
-    border-radius: var(--radius-lg); min-height: 260px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 12px; color: var(--green-900);
-    border: 1px solid rgba(39,105,70,0.15);
-  }
-  .hero-visual i { font-size: 2.5rem; opacity: 0.5; }
-  .hero-visual p { font-size: 0.85rem; font-weight: 500; opacity: 0.7; }
+  .hero-title { font-size:1.9rem; }
+  .hero-desc  { font-size:.875rem; }
+  .hero-visual { min-height:150px; border-radius:var(--r-md); }
+  .btn-row { flex-direction:column; }
+  .btn-primary, .btn-ghost { justify-content:center; width:100%; }
 
-  /* ── SECTION HEADERS ── */
-  .section-head { margin: 2.5rem 0 1.2rem; }
-  .section-eyebrow {
-    display: inline-flex; align-items: center; gap: 7px;
-    font-size: 0.72rem; font-weight: 600; letter-spacing: 1px;
-    text-transform: uppercase; color: var(--green-600);
-    margin-bottom: 6px;
-  }
-  .section-eyebrow i { font-size: 0.65rem; }
-  .section-title { font-size: 1.55rem; font-weight: 700; color: var(--gray-900); letter-spacing: -0.3px; }
+  /* Commune */
+  .commune-banner { align-items:flex-start; gap:.8rem; }
 
-  /* ── NEWS CARDS ── */
-  .news-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px,1fr));
-    gap: 1.25rem; margin-bottom: 0.5rem;
-  }
-  .news-card {
-    background: white; border-radius: var(--radius-lg); overflow: hidden;
-    border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm);
-    display: flex; flex-direction: column;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-  }
-  .news-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
-  .news-thumb {
-    height: 150px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem;
-  }
-  .news-thumb.green { background: linear-gradient(135deg, #b6d9c4, #cdeadb); color: var(--green-700); }
-  .news-thumb.blue  { background: linear-gradient(135deg, #bdd4e7, #d5e8f3); color: #1a6090; }
-  .news-thumb.amber { background: linear-gradient(135deg, #e8d5b0, #f3e6cd); color: #8a5a10; }
-  .news-body { padding: 1.1rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 6px; }
-  .news-meta { display: flex; align-items: center; gap: 8px; }
-  .news-date {
-    font-size: 0.72rem; font-weight: 600; color: var(--green-600);
-    display: flex; align-items: center; gap: 5px;
-  }
-  .news-date i { font-size: 0.65rem; }
-  .news-tag {
-    font-size: 0.65rem; font-weight: 600; padding: 2px 8px;
-    border-radius: 20px; background: var(--gray-100); color: var(--gray-600);
-    text-transform: uppercase; letter-spacing: 0.4px;
-  }
-  .news-card h3 { font-size: 0.92rem; font-weight: 600; color: var(--gray-800); line-height: 1.4; }
-  .news-card p  { font-size: 0.82rem; color: var(--gray-600); line-height: 1.55; }
-  .news-link {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 0.78rem; font-weight: 600; color: var(--green-600);
-    text-decoration: none; margin-top: auto; padding-top: 6px;
-  }
-  .news-link i { font-size: 0.65rem; transition: transform 0.15s; }
-  .news-card:hover .news-link i { transform: translateX(3px); }
+  /* News */
+  .news-grid { grid-template-columns:1fr; }
 
-  /* ── COMMUNE BANNER ── */
-  .commune-banner {
-    background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
-    padding: 1.25rem 1.5rem; margin: 1.5rem 0;
-    display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
-    box-shadow: var(--shadow-sm);
-  }
-  .commune-icon {
-    width: 48px; height: 48px; background: var(--green-50);
-    border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    color: var(--green-600); font-size: 1.25rem; flex-shrink: 0;
-    border: 1px solid #c8ddd2;
-  }
-  .commune-banner p { font-size: 0.875rem; color: var(--gray-700); line-height: 1.6; }
-  .commune-banner strong { color: var(--gray-900); }
-
-  /* ── QUICK ACCESS ── */
+  /* Quick scroll */
   .quick-grid {
-    display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 2.5rem;
+    flex-wrap:nowrap; overflow-x:auto;
+    padding-bottom:6px; margin-bottom:1.5rem;
+    -webkit-overflow-scrolling:touch;
   }
-  .q-chip {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: white; border: 1px solid var(--gray-200);
-    border-radius: 40px; padding: 8px 16px;
-    font-size: 0.825rem; font-weight: 500; color: var(--gray-700);
-    text-decoration: none; box-shadow: var(--shadow-sm);
-    transition: all 0.15s ease;
-  }
-  .q-chip i { color: var(--green-500); font-size: 0.8rem; }
-  .q-chip:hover { border-color: var(--green-400); color: var(--green-800); background: var(--green-50); box-shadow: var(--shadow-md); }
+  .quick-grid::-webkit-scrollbar { height:2px; }
+  .quick-grid::-webkit-scrollbar-thumb { background:var(--gray-300); border-radius:2px; }
+  .q-chip { white-space:nowrap; flex-shrink:0; }
 
-  /* ── MODULES ── */
-  .modules-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
-    gap: 1.1rem; margin-bottom: 2.5rem;
-  }
-  .module-card {
-    background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
-    padding: 1.4rem; box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s;
-    display: flex; flex-direction: column; gap: 8px;
-    text-decoration: none; color: inherit;
-  }
-  .module-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: var(--green-300); }
-  .mod-head { display: flex; align-items: center; gap: 10px; }
-  .mod-icon {
-    width: 38px; height: 38px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.95rem; flex-shrink: 0;
-  }
-  .mod-icon.g1 { background: #e8f4ed; color: #1a6e40; }
-  .mod-icon.g2 { background: #e3edf7; color: #1a5580; }
-  .mod-icon.g3 { background: #f0e8f7; color: #6b30a0; }
-  .mod-icon.g4 { background: #fef0e0; color: #9a5c10; }
-  .mod-icon.g5 { background: #fce8e8; color: #a02020; }
-  .mod-icon.g6 { background: #e8f4ed; color: #1a6e40; }
-  .mod-icon.g7 { background: #e3edf7; color: #1a5580; }
-  .mod-num { font-size: 0.68rem; font-weight: 700; color: var(--gray-400); letter-spacing: 0.5px; }
-  .module-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--gray-800); }
-  .module-card p  { font-size: 0.8rem; color: var(--gray-600); line-height: 1.55; }
-  .mod-arrow {
-    margin-top: auto; display: inline-flex; align-items: center; gap: 5px;
-    font-size: 0.75rem; font-weight: 600; color: var(--green-600);
-  }
-  .mod-arrow i { font-size: 0.65rem; transition: transform 0.15s; }
-  .module-card:hover .mod-arrow i { transform: translateX(3px); }
+  /* Modules */
+  .modules-grid { grid-template-columns:repeat(2,1fr); gap:.75rem; }
+  .module-card  { padding:1rem; }
 
-  /* ── TOFIN-BOT SECTION ── */
-  .tofin-section {
-    background: var(--green-900);
-    border-radius: var(--radius-xl); padding: 2.2rem 2.5rem;
-    margin: 0 0 2rem; color: white;
-    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem;
-  }
-  .tofin-icon-wrap {
-    width: 52px; height: 52px; background: rgba(255,255,255,0.12);
-    border-radius: 14px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; margin-bottom: 1rem;
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-  .tofin-section h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; }
-  .tofin-section p  { font-size: 0.875rem; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 1rem; }
-  .lang-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .lang-pill {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.9); padding: 5px 14px; border-radius: 40px;
-    font-size: 0.75rem; font-weight: 500;
-  }
-  .lang-pill i { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
-  .tofin-cta {
-    background: #f5c84a; color: var(--green-900);
-    padding: 11px 22px; border-radius: 40px;
-    font-size: 0.875rem; font-weight: 700; border: none; cursor: pointer;
-    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
-    transition: background 0.15s ease; text-decoration: none;
-  }
-  .tofin-cta:hover { background: #e5b83a; }
-  .tofin-cta i { font-size: 0.8rem; }
+  /* Tofin */
+  .tofin-section { padding:1.5rem 1.4rem; flex-direction:column; align-items:flex-start; gap:1.2rem; }
+  .tofin-cta { width:100%; justify-content:center; }
 
-  /* ── BOTTOM CARDS ── */
-  .bottom-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-    gap: 1.2rem; margin-bottom: 3rem;
-  }
-  .bot-card {
-    background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
-    padding: 1.5rem; box-shadow: var(--shadow-sm);
-    display: flex; flex-direction: column; gap: 10px;
-    transition: box-shadow 0.2s, transform 0.2s;
-    text-decoration: none; color: inherit;
-  }
-  .bot-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-  .bot-card-icon {
-    width: 42px; height: 42px; border-radius: 11px;
-    display: flex; align-items: center; justify-content: center; font-size: 1rem;
-  }
-  .bot-card-icon.store  { background: #e8f4ed; color: #1a6e40; }
-  .bot-card-icon.grad   { background: #e8eef7; color: #1a4080; }
-  .bot-card-icon.cal    { background: #f7f0e8; color: #8a5a10; }
-  .bot-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--gray-800); }
-  .bot-card p  { font-size: 0.82rem; color: var(--gray-600); line-height: 1.55; }
-  .bot-link {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 0.78rem; font-weight: 600; color: var(--green-600); text-decoration: none;
-  }
-  .bot-link i { font-size: 0.65rem; transition: transform 0.15s; }
-  .bot-card:hover .bot-link i { transform: translateX(3px); }
+  /* Bottom grid */
+  .bottom-grid { grid-template-columns:1fr; }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--green-950); color: rgba(255,255,255,0.7);
-    border-radius: 24px 24px 0 0; margin-top: 2rem; padding: 2.5rem 0 1.5rem;
-  }
-  .footer-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem; padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .footer-col h4 { font-size: 0.8rem; font-weight: 600; color: white; margin-bottom: 0.75rem; letter-spacing: 0.4px; text-transform: uppercase; }
-  .footer-col p, .footer-col a { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 4px; }
-  .footer-col a:hover { color: var(--green-300); }
-  .social-row { display: flex; gap: 10px; margin-top: 0.5rem; }
-  .social-btn {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.7); font-size: 0.85rem; text-decoration: none;
-    transition: background 0.15s, color 0.15s;
-  }
-  .social-btn:hover { background: var(--green-600); color: white; }
-  .footer-bottom {
-    text-align: center; padding-top: 1.25rem;
-    font-size: 0.75rem; color: rgba(255,255,255,0.35);
-  }
+  /* Footer */
+  .footer-grid { grid-template-columns:1fr 1fr; gap:1.2rem; }
 
-  /* ── TOFIN FLOAT ── */
-  .tofin-float-btn {
-    position: fixed; bottom: 28px; right: 28px;
-    width: 54px; height: 54px; border-radius: 54px;
-    background: var(--green-900); color: white; border: none;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem; cursor: pointer; z-index: 300;
-    box-shadow: 0 8px 24px rgba(14,45,28,0.3);
-    transition: transform 0.2s ease, background 0.15s;
-  }
-  .tofin-float-btn:hover { background: var(--green-700); transform: scale(1.05); }
+  /* Float modal */
+  .tofin-modal { right:12px; left:12px; width:auto; bottom:82px; }
+}
 
-  /* ── TOFIN MODAL ── */
-  .tofin-modal {
-    position: fixed; bottom: 94px; right: 28px;
-    background: white; border-radius: var(--radius-lg);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-    width: 292px; z-index: 300; display: none;
-    border: 1px solid var(--gray-200); overflow: hidden;
-  }
-  .modal-header {
-    background: var(--green-900); color: white;
-    padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;
-  }
-  .modal-header-left { display: flex; align-items: center; gap: 10px; }
-  .modal-avatar {
-    width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 8px;
-    display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
-  }
-  .modal-header h4 { font-size: 0.875rem; font-weight: 600; }
-  .modal-header .status { font-size: 0.7rem; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 5px; }
-  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
-  .modal-close { background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer; font-size: 0.9rem; padding: 2px; }
-  .modal-close:hover { color: white; }
-  .modal-body { padding: 14px 16px; }
-  .chat-bubble {
-    background: var(--gray-100); border-radius: 12px 12px 12px 4px;
-    padding: 10px 12px; font-size: 0.82rem; color: var(--gray-700);
-    line-height: 1.5; margin-bottom: 12px;
-  }
-  .modal-langs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
-  .modal-lang-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--green-50); border: 1px solid #c8ddd2; color: var(--green-800);
-    padding: 5px 12px; border-radius: 30px; font-size: 0.75rem; font-weight: 500;
-    cursor: pointer; transition: all 0.15s; border: none;
-  }
-  .modal-lang-btn:hover { background: var(--green-600); color: white; }
-  .modal-lang-btn i { font-size: 0.68rem; }
-  .modal-action {
-    background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 10px;
-    padding: 10px 12px; font-size: 0.78rem; color: var(--gray-600); display: flex; align-items: center; gap: 8px;
-  }
-  .modal-action i { color: var(--green-500); font-size: 0.85rem; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 800px) {
-    .hero-inner { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
-    .hero-visual { min-height: 180px; }
-    .tofin-section { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .container { padding: 0 16px; }
-  }
+/* ══════════════════════════════
+   SMALL ≤ 480px
+══════════════════════════════ */
+@media (max-width:480px) {
+  .hero-title { font-size:1.65rem; }
+  .modules-grid { grid-template-columns:1fr; }
+  .footer-grid  { grid-template-columns:1fr; }
+  .section-title { font-size:1.25rem; }
+}
 </style>
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
+<!-- ══ NAVBAR ══ -->
 <nav class="navbar">
   <div class="container nav-inner">
     <a class="logo-mark" href="#">
       <div class="logo-icon"><i class="fas fa-water"></i></div>
       <div class="logo-text">
         <span class="logo-name">Sô-Ava</span>
-        <span class="logo-sub">Commune lacustre & numérique</span>
+        <span class="logo-sub">Commune lacustre &amp; numérique</span>
       </div>
     </a>
     <div class="nav-links">
-      <a href="#"><i class="fas fa-home" style="margin-right:5px;font-size:0.75rem;"></i> Accueil</a>
-      <a href="#"><i class="fas fa-landmark" style="margin-right:5px;font-size:0.75rem;"></i> Mairie</a>
-      <a href="#"><i class="fas fa-map-marked-alt" style="margin-right:5px;font-size:0.75rem;"></i> Tourisme</a>
-      <a href="#"><i class="fas fa-briefcase" style="margin-right:5px;font-size:0.75rem;"></i> Opportunités</a>
-      <a href="#" class="nav-cta"><i class="fas fa-microphone-alt"></i> TOFIN-BOT</a>
+      <a href="#"><i class="fas fa-home" style="margin-right:5px;font-size:.72rem;"></i>Accueil</a>
+      <a href="#"><i class="fas fa-landmark" style="margin-right:5px;font-size:.72rem;"></i>Mairie</a>
+      <a href="#"><i class="fas fa-map-marked-alt" style="margin-right:5px;font-size:.72rem;"></i>Tourisme</a>
+      <a href="#"><i class="fas fa-briefcase" style="margin-right:5px;font-size:.72rem;"></i>Opportunités</a>
+      <a href="#" class="nav-cta"><i class="fas fa-microphone-alt"></i>TOFIN-BOT</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="#"><i class="fas fa-home"></i>Accueil</a>
+  <a href="#"><i class="fas fa-landmark"></i>Mairie</a>
+  <a href="#"><i class="fas fa-map-marked-alt"></i>Tourisme</a>
+  <a href="#"><i class="fas fa-briefcase"></i>Opportunités</a>
+  <div class="drawer-divider"></div>
+  <a href="#" class="drawer-cta"><i class="fas fa-microphone-alt"></i>Activer TOFIN-BOT</a>
+</div>
+
 <div class="container">
 
-  <!-- ── HERO ── -->
+  <!-- ══ HERO ══ -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-badge"><i class="fas fa-water"></i> Perle du lac Nokoué</div>
+      <div>
+        <div class="hero-badge"><i class="fas fa-water"></i>Perle du lac Nokoué</div>
         <h1 class="hero-title">Valorisons ensemble<br>l'avenir de Sô‑Ava</h1>
         <p class="hero-desc">Plateforme digitale officielle : services publics, économie locale, tourisme et engagement jeunesse, avec un assistant vocal inclusif.</p>
         <div class="btn-row">
-          <a href="#" class="btn-primary"><i class="fas fa-compass"></i> Explorer les services</a>
-          <a href="#" class="btn-ghost"><i class="fas fa-headset"></i> Activer TOFIN-BOT</a>
+          <a href="#" class="btn-primary"><i class="fas fa-compass"></i>Explorer les services</a>
+          <a href="#" class="btn-ghost"><i class="fas fa-headset"></i>Activer TOFIN-BOT</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -470,15 +554,15 @@
     </div>
   </section>
 
-  <!-- ── COMMUNE DESCRIPTION ── -->
+  <!-- ══ COMMUNE ══ -->
   <div class="commune-banner">
     <div class="commune-icon"><i class="fas fa-map-marker-alt"></i></div>
     <p><strong>Sô-Ava : commune lacustre du Bénin</strong> — berceau de la culture tofin, villages sur pilotis, richesses artisanales et jeunesse dynamique. Une destination entre tradition et innovation numérique.</p>
   </div>
 
-  <!-- ── ACTUALITÉS ── -->
+  <!-- ══ ACTUALITÉS ══ -->
   <div class="section-head">
-    <div class="section-eyebrow"><i class="fas fa-newspaper"></i> Dernières nouvelles</div>
+    <div class="section-eyebrow"><i class="fas fa-newspaper"></i>Dernières nouvelles</div>
     <h2 class="section-title">Actualités récentes</h2>
   </div>
   <div class="news-grid">
@@ -486,7 +570,7 @@
       <div class="news-thumb green"><i class="fas fa-seedling"></i></div>
       <div class="news-body">
         <div class="news-meta">
-          <div class="news-date"><i class="fas fa-calendar"></i> 15 avril 2026</div>
+          <div class="news-date"><i class="fas fa-calendar"></i>15 avril 2026</div>
           <span class="news-tag">Jeunesse</span>
         </div>
         <h3>Lancement du programme PTA 2026 – Mairie des Jeunes</h3>
@@ -498,7 +582,7 @@
       <div class="news-thumb blue"><i class="fas fa-ship"></i></div>
       <div class="news-body">
         <div class="news-meta">
-          <div class="news-date"><i class="fas fa-calendar"></i> 8 avril 2026</div>
+          <div class="news-date"><i class="fas fa-calendar"></i>8 avril 2026</div>
           <span class="news-tag">Tourisme</span>
         </div>
         <h3>FESTILAC 2026 : Sô-Ava accueille le festival des cultures lacustres</h3>
@@ -510,7 +594,7 @@
       <div class="news-thumb amber"><i class="fas fa-store"></i></div>
       <div class="news-body">
         <div class="news-meta">
-          <div class="news-date"><i class="fas fa-calendar"></i> 1 avril 2026</div>
+          <div class="news-date"><i class="fas fa-calendar"></i>1 avril 2026</div>
           <span class="news-tag">Commerce</span>
         </div>
         <h3>Nouvelle marketplace artisanale en ligne</h3>
@@ -520,114 +604,84 @@
     </div>
   </div>
 
-  <!-- ── ACCÈS RAPIDE ── -->
-  <div class="section-head" style="margin-top:2.2rem;">
-    <div class="section-eyebrow"><i class="fas fa-bolt"></i> Navigation rapide</div>
+  <!-- ══ ACCÈS RAPIDE ══ -->
+  <div class="section-head" style="margin-top:2rem;">
+    <div class="section-eyebrow"><i class="fas fa-bolt"></i>Navigation rapide</div>
     <h2 class="section-title">Accès rapide aux services</h2>
   </div>
   <div class="quick-grid">
-    <a href="#" class="q-chip"><i class="fas fa-id-card"></i> État civil</a>
-    <a href="#" class="q-chip"><i class="fas fa-city"></i> Urbanisme</a>
-    <a href="#" class="q-chip"><i class="fas fa-coins"></i> Fiscalité</a>
-    <a href="#" class="q-chip"><i class="fas fa-briefcase"></i> Opportunités</a>
-    <a href="#" class="q-chip"><i class="fas fa-shopping-bag"></i> Marketplace</a>
-    <a href="#" class="q-chip"><i class="fas fa-route"></i> Circuits touristiques</a>
-    <a href="#" class="q-chip"><i class="fas fa-users"></i> Mairie des Jeunes</a>
-    <a href="#" class="q-chip"><i class="fas fa-file-alt"></i> Documents officiels</a>
+    <a href="#" class="q-chip"><i class="fas fa-id-card"></i>État civil</a>
+    <a href="#" class="q-chip"><i class="fas fa-city"></i>Urbanisme</a>
+    <a href="#" class="q-chip"><i class="fas fa-coins"></i>Fiscalité</a>
+    <a href="#" class="q-chip"><i class="fas fa-briefcase"></i>Opportunités</a>
+    <a href="#" class="q-chip"><i class="fas fa-shopping-bag"></i>Marketplace</a>
+    <a href="#" class="q-chip"><i class="fas fa-route"></i>Circuits touristiques</a>
+    <a href="#" class="q-chip"><i class="fas fa-users"></i>Mairie des Jeunes</a>
+    <a href="#" class="q-chip"><i class="fas fa-file-alt"></i>Documents officiels</a>
   </div>
 
-  <!-- ── 7 MODULES ── -->
+  <!-- ══ 7 MODULES ══ -->
   <div class="section-head">
-    <div class="section-eyebrow"><i class="fas fa-th-large"></i> Architecture</div>
+    <div class="section-eyebrow"><i class="fas fa-th-large"></i>Architecture</div>
     <h2 class="section-title">La plateforme en 7 modules clés</h2>
   </div>
   <div class="modules-grid">
     <a href="#" class="module-card">
-      <div class="mod-head">
-        <div class="mod-icon g1"><i class="fas fa-home"></i></div>
-        <span class="mod-num">MODULE 01</span>
-      </div>
-      <h3>Accueil</h3>
-      <p>Bannière dynamique, actualités, orientation rapide et accès TOFIN-BOT.</p>
+      <div class="mod-head"><div class="mod-icon g1"><i class="fas fa-home"></i></div><span class="mod-num">MODULE 01</span></div>
+      <h3>Accueil</h3><p>Bannière dynamique, actualités, orientation rapide et accès TOFIN-BOT.</p>
       <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
     </a>
     <a href="#" class="module-card">
-      <div class="mod-head">
-        <div class="mod-icon g2"><i class="fas fa-landmark"></i></div>
-        <span class="mod-num">MODULE 02</span>
-      </div>
-      <h3>Mairie centrale</h3>
-      <p>Mot du Maire, état civil, urbanisme, fiscalité, documents officiels.</p>
+      <div class="mod-head"><div class="mod-icon g2"><i class="fas fa-landmark"></i></div><span class="mod-num">MODULE 02</span></div>
+      <h3>Mairie centrale</h3><p>Mot du Maire, état civil, urbanisme, fiscalité, documents officiels.</p>
       <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
     </a>
     <a href="#" class="module-card">
-      <div class="mod-head">
-        <div class="mod-icon g3"><i class="fas fa-users"></i></div>
-        <span class="mod-num">MODULE 03</span>
-      </div>
-      <h3>Mairie des Jeunes</h3>
-      <p>Programme PTA 2026, rapports, projets, galerie et tableau de suivi.</p>
+      <div class="mod-head"><div class="mod-icon g3"><i class="fas fa-users"></i></div><span class="mod-num">MODULE 03</span></div>
+      <h3>Mairie des Jeunes</h3><p>Programme PTA 2026, rapports, projets, galerie et tableau de suivi.</p>
       <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
     </a>
     <a href="#" class="module-card">
-      <div class="mod-head">
-        <div class="mod-icon g4"><i class="fas fa-map-marked-alt"></i></div>
-        <span class="mod-num">MODULE 04</span>
-      </div>
-      <h3>Tourisme</h3>
-      <p>Sites, circuits lacustres, festivals, réservation guide, carte interactive.</p>
+      <div class="mod-head"><div class="mod-icon g4"><i class="fas fa-map-marked-alt"></i></div><span class="mod-num">MODULE 04</span></div>
+      <h3>Tourisme</h3><p>Sites, circuits lacustres, festivals, réservation guide, carte interactive.</p>
       <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
     </a>
     <a href="#" class="module-card">
-      <div class="mod-head">
-        <div class="mod-icon g5"><i class="fas fa-shopping-bag"></i></div>
-        <span class="mod-num">MODULE 05</span>
-      </div>
-      <h3>Marketplace</h3>
-      <p>Produits artisanaux, pêche, commandes et paiement Mobile Money.</p>
+      <div class="mod-head"><div class="mod-icon g5"><i class="fas fa-shopping-bag"></i></div><span class="mod-num">MODULE 05</span></div>
+      <h3>Marketplace</h3><p>Produits artisanaux, pêche, commandes et paiement Mobile Money.</p>
       <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
     </a>
     <a href="#" class="module-card">
-      <div class="mod-head">
-        <div class="mod-icon g6"><i class="fas fa-chart-line"></i></div>
-        <span class="mod-num">MODULE 06</span>
-      </div>
-      <h3>Opportunités</h3>
-      <p>Emplois, bourses, formations, financements, alertes et moteur de recherche.</p>
+      <div class="mod-head"><div class="mod-icon g6"><i class="fas fa-chart-line"></i></div><span class="mod-num">MODULE 06</span></div>
+      <h3>Opportunités</h3><p>Emplois, bourses, formations, financements, alertes et moteur de recherche.</p>
       <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
     </a>
     <a href="#" class="module-card">
-      <div class="mod-head">
-        <div class="mod-icon g7"><i class="fas fa-robot"></i></div>
-        <span class="mod-num">MODULE 07</span>
-      </div>
-      <h3>TOFIN-BOT</h3>
-      <p>Assistant vocal multilingue (Tofingbé, Fongbé, Français), lecture vocale inclusive.</p>
+      <div class="mod-head"><div class="mod-icon g7"><i class="fas fa-robot"></i></div><span class="mod-num">MODULE 07</span></div>
+      <h3>TOFIN-BOT</h3><p>Assistant vocal multilingue (Tofingbé, Fongbé, Français), lecture vocale inclusive.</p>
       <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
     </a>
   </div>
 
-  <!-- ── TOFIN-BOT ── -->
+  <!-- ══ TOFIN-BOT ══ -->
   <div class="tofin-section">
-    <div>
+    <div class="tofin-content">
       <div class="tofin-icon-wrap"><i class="fas fa-microphone-alt"></i></div>
       <h3>TOFIN-BOT : L'assistant vocal pour tous</h3>
       <p>Accédez aux décisions municipales, trouvez un service, ou naviguez sur la plateforme simplement en parlant Tofingbé, Fongbé ou Français.</p>
       <div class="lang-pills">
-        <span class="lang-pill"><i class="fas fa-globe-africa"></i> Tofingbé</span>
-        <span class="lang-pill"><i class="fas fa-comment-dots"></i> Fongbé</span>
-        <span class="lang-pill"><i class="fas fa-flag"></i> Français</span>
+        <span class="lang-pill"><i class="fas fa-globe-africa"></i>Tofingbé</span>
+        <span class="lang-pill"><i class="fas fa-comment-dots"></i>Fongbé</span>
+        <span class="lang-pill"><i class="fas fa-flag"></i>Français</span>
       </div>
     </div>
-    <div>
-      <button class="tofin-cta"><i class="fas fa-play-circle"></i> Écouter un extrait</button>
-    </div>
+    <button class="tofin-cta"><i class="fas fa-play-circle"></i>Écouter un extrait</button>
   </div>
 
-  <!-- ── BOTTOM CARDS ── -->
+  <!-- ══ BOTTOM CARDS ══ -->
   <div class="section-head">
-    <div class="section-eyebrow"><i class="fas fa-layer-group"></i> Vie locale</div>
-    <h2 class="section-title">Économie, opportunités & agenda</h2>
+    <div class="section-eyebrow"><i class="fas fa-layer-group"></i>Vie locale</div>
+    <h2 class="section-title">Économie, opportunités &amp; agenda</h2>
   </div>
   <div class="bottom-grid">
     <a href="#" class="bot-card">
@@ -638,7 +692,7 @@
     </a>
     <a href="#" class="bot-card">
       <div class="bot-card-icon grad"><i class="fas fa-graduation-cap"></i></div>
-      <h3>Opportunités & financements</h3>
+      <h3>Opportunités &amp; financements</h3>
       <p>Offres d'emploi, bourses, formations et financements. Abonnez-vous aux alertes pour ne rien rater.</p>
       <span class="bot-link">Explorer les opportunités <i class="fas fa-arrow-right"></i></span>
     </a>
@@ -652,7 +706,7 @@
 
 </div>
 
-<!-- ── FOOTER ── -->
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -664,8 +718,8 @@
       </div>
       <div class="footer-col">
         <h4>Services</h4>
-        <a href="#">État civil & documents</a>
-        <a href="#">Urbanisme & permis</a>
+        <a href="#">État civil &amp; documents</a>
+        <a href="#">Urbanisme &amp; permis</a>
         <a href="#">Fiscalité locale</a>
         <a href="#">Mairie des Jeunes</a>
       </div>
@@ -683,7 +737,7 @@
           <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
           <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
         </div>
-        <a href="#" style="margin-top:10px;">Mentions légales</a>
+        <a href="#">Mentions légales</a>
         <a href="#">Politique de confidentialité</a>
       </div>
     </div>
@@ -693,18 +747,19 @@
   </div>
 </footer>
 
-<!-- ── TOFIN-BOT FLOAT ── -->
+<!-- ══ FLOAT BUTTON ══ -->
 <button class="tofin-float-btn" id="floatBtn" title="Ouvrir TOFIN-BOT">
   <i class="fas fa-comment-dots"></i>
 </button>
 
+<!-- ══ TOFIN MODAL ══ -->
 <div class="tofin-modal" id="tofinModal">
   <div class="modal-header">
     <div class="modal-header-left">
       <div class="modal-avatar"><i class="fas fa-robot"></i></div>
       <div>
         <h4>TOFIN-BOT</h4>
-        <div class="status"><span class="status-dot"></span> En ligne</div>
+        <div class="modal-status"><span class="status-dot"></span>En ligne</div>
       </div>
     </div>
     <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
@@ -714,9 +769,9 @@
       <strong>Mi do wa ?</strong> (Que puis-je pour vous ?)<br>Choisissez votre langue pour continuer :
     </div>
     <div class="modal-langs">
-      <button class="modal-lang-btn"><i class="fas fa-flag"></i> Français</button>
-      <button class="modal-lang-btn"><i class="fas fa-comment-dots"></i> Fongbé</button>
-      <button class="modal-lang-btn"><i class="fas fa-globe-africa"></i> Tofingbé</button>
+      <button class="modal-lang-btn"><i class="fas fa-flag"></i>Français</button>
+      <button class="modal-lang-btn"><i class="fas fa-comment-dots"></i>Fongbé</button>
+      <button class="modal-lang-btn"><i class="fas fa-globe-africa"></i>Tofingbé</button>
     </div>
     <div class="modal-action">
       <i class="fas fa-microphone-alt"></i>
@@ -726,14 +781,32 @@
 </div>
 
 <script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navDrawer = document.getElementById('navDrawer');
+  hamburger.addEventListener('click', () => {
+    const isOpen = navDrawer.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navDrawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navDrawer.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // TOFIN-BOT modal
   const floatBtn = document.getElementById('floatBtn');
-  const modal = document.getElementById('tofinModal');
+  const modal    = document.getElementById('tofinModal');
   const closeBtn = document.getElementById('closeModal');
-  floatBtn.addEventListener('click', () => {
+  floatBtn.addEventListener('click', e => {
+    e.stopPropagation();
     modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
   });
   closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', e => {
     if (!modal.contains(e.target) && e.target !== floatBtn) modal.style.display = 'none';
   });
 </script>
