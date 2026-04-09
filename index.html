@@ -1,510 +1,741 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Sô-Ava | Plateforme digitale officielle</title>
-    <!-- Google Fonts & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sô-Ava | Plateforme digitale officielle</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            scroll-behavior: smooth;
-        }
+  :root {
+    --green-950: #071a10;
+    --green-900: #0d2b1c;
+    --green-800: #163d28;
+    --green-700: #1e5237;
+    --green-600: #276946;
+    --green-500: #2d7f54;
+    --green-400: #3a9e6a;
+    --green-200: #a3d5b8;
+    --green-100: #d4eed e;
+    --green-50:  #eef6f1;
+    --sand-100: #f5f2eb;
+    --sand-200: #e9e4d6;
+    --gray-50:  #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.04);
+  }
 
-        /* container principal */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
 
-        /* header / navbar */
-        .navbar {
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(2px);
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .nav-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            flex-wrap: wrap;
-        }
-        .logo h1 {
-            font-size: 1.7rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1e3c2c, #2b6e4f);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.3px;
-        }
-        .logo span {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: #2d6a4f;
-            display: block;
-            line-height: 1.2;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #1e293b;
-            transition: 0.2s;
-        }
-        .nav-links a:hover {
-            color: #2b6e4f;
-        }
-        .btn-tfin {
-            background: #1e3c2c;
-            color: white !important;
-            padding: 8px 18px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-        .btn-tfin i {
-            font-size: 1rem;
-        }
+  .container { max-width: 1220px; margin: 0 auto; padding: 0 28px; }
 
-        /* hero bannière dynamique */
-        .hero {
-            background: linear-gradient(105deg, #eef5f0 0%, #d9e6db 100%);
-            border-radius: 2rem;
-            margin: 2rem 0 2rem 0;
-            overflow: hidden;
-            position: relative;
-        }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-            padding: 2.5rem 2.5rem;
-        }
-        .hero-text h2 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            line-height: 1.2;
-            color: #0b2b1f;
-        }
-        .hero-text p {
-            font-size: 1.1rem;
-            margin: 1rem 0 1.5rem;
-            color: #2d3e36;
-        }
-        .hero-badge {
-            background: #2b6e4f20;
-            color: #1e5a3a;
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-        }
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .btn-primary {
-            background: #1e3c2c;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid #1e3c2c;
-            color: #1e3c2c;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .hero-visual {
-            background: url('https://placehold.co/600x400/e2f0e6/2b6e4f?text=S%C3%B4-Ava+Lacustre') center/cover;
-            min-height: 240px;
-            border-radius: 1.5rem;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-            background-image: linear-gradient(115deg, #cfe3d6 0%, #b7cfc0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: #1e3c2c;
-        }
+  /* ── NAVBAR ── */
+  .navbar {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky; top: 0; z-index: 200;
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 0; gap: 1.5rem;
+  }
+  .logo-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--green-900);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 16px;
+  }
+  .logo-text { display: flex; flex-direction: column; gap: 1px; }
+  .logo-name { font-size: 1.05rem; font-weight: 700; color: var(--green-900); letter-spacing: -0.3px; }
+  .logo-sub  { font-size: 0.7rem; font-weight: 400; color: var(--gray-600); letter-spacing: 0.3px; text-transform: uppercase; }
 
-        /* actualités récentes */
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 2.5rem 0 1rem 0;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: #2b6e4f;
-            margin-top: 8px;
-            border-radius: 4px;
-        }
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.8rem;
-            margin: 1.5rem 0;
-        }
-        .news-card {
-            background: white;
-            border-radius: 1.2rem;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-            transition: all 0.25s ease;
-            border: 1px solid #eef2f0;
-        }
-        .news-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-        }
-        .news-img {
-            height: 160px;
-            background: #cbd5e1;
-            background-size: cover;
-        }
-        .news-content {
-            padding: 1.2rem;
-        }
-        .news-date {
-            font-size: 0.75rem;
-            color: #2b6e4f;
-            font-weight: 600;
-        }
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-            margin: 2rem 0 3rem;
-        }
-        .module-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 1.5rem;
-            transition: 0.2s;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-        }
-        .module-icon {
-            font-size: 2.2rem;
-            color: #2b6e4f;
-            margin-bottom: 1rem;
-        }
-        .module-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 0.6rem;
-        }
-        .quick-access {
-            background: #f1f5f4;
-            border-radius: 1.8rem;
-            padding: 2rem 1.8rem;
-            margin: 2rem 0;
-        }
-        .quick-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .qbtn {
-            background: white;
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 500;
-            text-decoration: none;
-            color: #1e2a3a;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: 0.2s;
-            border: 1px solid #dce5e0;
-        }
-        .qbtn i {
-            margin-right: 8px;
-            color: #2b6e4f;
-        }
-        .tofin-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #0b2b1f;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            z-index: 200;
-            transition: 0.2s;
-            border: none;
-        }
-        .tofin-preview {
-            background: #ffffffdd;
-            backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-        footer {
-            background: #0c1f18;
-            color: #ccdcd4;
-            margin-top: 4rem;
-            padding: 2rem 0;
-            border-radius: 2rem 2rem 0 0;
-        }
-        @media (max-width: 800px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .nav-flex { flex-direction: column; gap: 1rem; }
-            .hero-text h2 { font-size: 2rem; }
-        }
-    </style>
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; }
+  .nav-links a {
+    text-decoration: none; font-size: 0.875rem; font-weight: 500;
+    color: var(--gray-700); padding: 6px 14px; border-radius: 8px;
+    transition: all 0.15s ease;
+  }
+  .nav-links a:hover { background: var(--gray-100); color: var(--green-700); }
+  .nav-cta {
+    background: var(--green-900); color: white !important;
+    padding: 8px 18px !important; border-radius: 40px !important;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 600 !important;
+    transition: background 0.15s ease !important;
+  }
+  .nav-cta:hover { background: var(--green-700) !important; }
+  .nav-cta i { font-size: 0.8rem; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(140deg, #eef7f2 0%, #dfeee7 55%, #d1e8da 100%);
+    border-radius: var(--radius-xl);
+    margin: 2rem 0;
+    overflow: hidden;
+    border: 1px solid #c8e0d0;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(39,105,70,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; align-items: center;
+    padding: 3rem;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(39,105,70,0.12); color: var(--green-700);
+    padding: 5px 14px; border-radius: 40px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2px;
+    margin-bottom: 1.1rem;
+  }
+  .hero-badge i { font-size: 0.7rem; }
+  .hero-title {
+    font-size: 2.5rem; font-weight: 800; line-height: 1.15;
+    color: var(--green-950); letter-spacing: -0.8px; margin-bottom: 1rem;
+  }
+  .hero-desc {
+    font-size: 0.975rem; color: var(--green-800); line-height: 1.7;
+    margin-bottom: 1.8rem; max-width: 420px;
+  }
+  .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-900); color: white;
+    padding: 11px 24px; border-radius: 40px;
+    font-size: 0.875rem; font-weight: 600; text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .btn-primary:hover { background: var(--green-700); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1.5px solid var(--green-700); color: var(--green-800);
+    padding: 10px 22px; border-radius: 40px;
+    font-size: 0.875rem; font-weight: 500; text-decoration: none;
+    transition: all 0.15s ease; background: transparent;
+  }
+  .btn-ghost:hover { background: rgba(39,105,70,0.07); }
+  .hero-visual {
+    background: linear-gradient(135deg, #c0dbc9 0%, #a5c9b5 100%);
+    border-radius: var(--radius-lg); min-height: 260px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; color: var(--green-900);
+    border: 1px solid rgba(39,105,70,0.15);
+  }
+  .hero-visual i { font-size: 2.5rem; opacity: 0.5; }
+  .hero-visual p { font-size: 0.85rem; font-weight: 500; opacity: 0.7; }
+
+  /* ── SECTION HEADERS ── */
+  .section-head { margin: 2.5rem 0 1.2rem; }
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--green-600);
+    margin-bottom: 6px;
+  }
+  .section-eyebrow i { font-size: 0.65rem; }
+  .section-title { font-size: 1.55rem; font-weight: 700; color: var(--gray-900); letter-spacing: -0.3px; }
+
+  /* ── NEWS CARDS ── */
+  .news-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px,1fr));
+    gap: 1.25rem; margin-bottom: 0.5rem;
+  }
+  .news-card {
+    background: white; border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .news-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+  .news-thumb {
+    height: 150px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+  }
+  .news-thumb.green { background: linear-gradient(135deg, #b6d9c4, #cdeadb); color: var(--green-700); }
+  .news-thumb.blue  { background: linear-gradient(135deg, #bdd4e7, #d5e8f3); color: #1a6090; }
+  .news-thumb.amber { background: linear-gradient(135deg, #e8d5b0, #f3e6cd); color: #8a5a10; }
+  .news-body { padding: 1.1rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .news-meta { display: flex; align-items: center; gap: 8px; }
+  .news-date {
+    font-size: 0.72rem; font-weight: 600; color: var(--green-600);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .news-date i { font-size: 0.65rem; }
+  .news-tag {
+    font-size: 0.65rem; font-weight: 600; padding: 2px 8px;
+    border-radius: 20px; background: var(--gray-100); color: var(--gray-600);
+    text-transform: uppercase; letter-spacing: 0.4px;
+  }
+  .news-card h3 { font-size: 0.92rem; font-weight: 600; color: var(--gray-800); line-height: 1.4; }
+  .news-card p  { font-size: 0.82rem; color: var(--gray-600); line-height: 1.55; }
+  .news-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.78rem; font-weight: 600; color: var(--green-600);
+    text-decoration: none; margin-top: auto; padding-top: 6px;
+  }
+  .news-link i { font-size: 0.65rem; transition: transform 0.15s; }
+  .news-card:hover .news-link i { transform: translateX(3px); }
+
+  /* ── COMMUNE BANNER ── */
+  .commune-banner {
+    background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+    display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+    box-shadow: var(--shadow-sm);
+  }
+  .commune-icon {
+    width: 48px; height: 48px; background: var(--green-50);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    color: var(--green-600); font-size: 1.25rem; flex-shrink: 0;
+    border: 1px solid #c8ddd2;
+  }
+  .commune-banner p { font-size: 0.875rem; color: var(--gray-700); line-height: 1.6; }
+  .commune-banner strong { color: var(--gray-900); }
+
+  /* ── QUICK ACCESS ── */
+  .quick-grid {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 2.5rem;
+  }
+  .q-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: 40px; padding: 8px 16px;
+    font-size: 0.825rem; font-weight: 500; color: var(--gray-700);
+    text-decoration: none; box-shadow: var(--shadow-sm);
+    transition: all 0.15s ease;
+  }
+  .q-chip i { color: var(--green-500); font-size: 0.8rem; }
+  .q-chip:hover { border-color: var(--green-400); color: var(--green-800); background: var(--green-50); box-shadow: var(--shadow-md); }
+
+  /* ── MODULES ── */
+  .modules-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+    gap: 1.1rem; margin-bottom: 2.5rem;
+  }
+  .module-card {
+    background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+    padding: 1.4rem; box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s;
+    display: flex; flex-direction: column; gap: 8px;
+    text-decoration: none; color: inherit;
+  }
+  .module-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: var(--green-300); }
+  .mod-head { display: flex; align-items: center; gap: 10px; }
+  .mod-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.95rem; flex-shrink: 0;
+  }
+  .mod-icon.g1 { background: #e8f4ed; color: #1a6e40; }
+  .mod-icon.g2 { background: #e3edf7; color: #1a5580; }
+  .mod-icon.g3 { background: #f0e8f7; color: #6b30a0; }
+  .mod-icon.g4 { background: #fef0e0; color: #9a5c10; }
+  .mod-icon.g5 { background: #fce8e8; color: #a02020; }
+  .mod-icon.g6 { background: #e8f4ed; color: #1a6e40; }
+  .mod-icon.g7 { background: #e3edf7; color: #1a5580; }
+  .mod-num { font-size: 0.68rem; font-weight: 700; color: var(--gray-400); letter-spacing: 0.5px; }
+  .module-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--gray-800); }
+  .module-card p  { font-size: 0.8rem; color: var(--gray-600); line-height: 1.55; }
+  .mod-arrow {
+    margin-top: auto; display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.75rem; font-weight: 600; color: var(--green-600);
+  }
+  .mod-arrow i { font-size: 0.65rem; transition: transform 0.15s; }
+  .module-card:hover .mod-arrow i { transform: translateX(3px); }
+
+  /* ── TOFIN-BOT SECTION ── */
+  .tofin-section {
+    background: var(--green-900);
+    border-radius: var(--radius-xl); padding: 2.2rem 2.5rem;
+    margin: 0 0 2rem; color: white;
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem;
+  }
+  .tofin-icon-wrap {
+    width: 52px; height: 52px; background: rgba(255,255,255,0.12);
+    border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .tofin-section h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .tofin-section p  { font-size: 0.875rem; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 1rem; }
+  .lang-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .lang-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.9); padding: 5px 14px; border-radius: 40px;
+    font-size: 0.75rem; font-weight: 500;
+  }
+  .lang-pill i { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+  .tofin-cta {
+    background: #f5c84a; color: var(--green-900);
+    padding: 11px 22px; border-radius: 40px;
+    font-size: 0.875rem; font-weight: 700; border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    transition: background 0.15s ease; text-decoration: none;
+  }
+  .tofin-cta:hover { background: #e5b83a; }
+  .tofin-cta i { font-size: 0.8rem; }
+
+  /* ── BOTTOM CARDS ── */
+  .bottom-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 1.2rem; margin-bottom: 3rem;
+  }
+  .bot-card {
+    background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+    padding: 1.5rem; box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; gap: 10px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none; color: inherit;
+  }
+  .bot-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .bot-card-icon {
+    width: 42px; height: 42px; border-radius: 11px;
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  }
+  .bot-card-icon.store  { background: #e8f4ed; color: #1a6e40; }
+  .bot-card-icon.grad   { background: #e8eef7; color: #1a4080; }
+  .bot-card-icon.cal    { background: #f7f0e8; color: #8a5a10; }
+  .bot-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--gray-800); }
+  .bot-card p  { font-size: 0.82rem; color: var(--gray-600); line-height: 1.55; }
+  .bot-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.78rem; font-weight: 600; color: var(--green-600); text-decoration: none;
+  }
+  .bot-link i { font-size: 0.65rem; transition: transform 0.15s; }
+  .bot-card:hover .bot-link i { transform: translateX(3px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-950); color: rgba(255,255,255,0.7);
+    border-radius: 24px 24px 0 0; margin-top: 2rem; padding: 2.5rem 0 1.5rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-col h4 { font-size: 0.8rem; font-weight: 600; color: white; margin-bottom: 0.75rem; letter-spacing: 0.4px; text-transform: uppercase; }
+  .footer-col p, .footer-col a { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 4px; }
+  .footer-col a:hover { color: var(--green-300); }
+  .social-row { display: flex; gap: 10px; margin-top: 0.5rem; }
+  .social-btn {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.7); font-size: 0.85rem; text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .social-btn:hover { background: var(--green-600); color: white; }
+  .footer-bottom {
+    text-align: center; padding-top: 1.25rem;
+    font-size: 0.75rem; color: rgba(255,255,255,0.35);
+  }
+
+  /* ── TOFIN FLOAT ── */
+  .tofin-float-btn {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 54px; height: 54px; border-radius: 54px;
+    background: var(--green-900); color: white; border: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; cursor: pointer; z-index: 300;
+    box-shadow: 0 8px 24px rgba(14,45,28,0.3);
+    transition: transform 0.2s ease, background 0.15s;
+  }
+  .tofin-float-btn:hover { background: var(--green-700); transform: scale(1.05); }
+
+  /* ── TOFIN MODAL ── */
+  .tofin-modal {
+    position: fixed; bottom: 94px; right: 28px;
+    background: white; border-radius: var(--radius-lg);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    width: 292px; z-index: 300; display: none;
+    border: 1px solid var(--gray-200); overflow: hidden;
+  }
+  .modal-header {
+    background: var(--green-900); color: white;
+    padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .modal-header-left { display: flex; align-items: center; gap: 10px; }
+  .modal-avatar {
+    width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+  }
+  .modal-header h4 { font-size: 0.875rem; font-weight: 600; }
+  .modal-header .status { font-size: 0.7rem; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 5px; }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+  .modal-close { background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer; font-size: 0.9rem; padding: 2px; }
+  .modal-close:hover { color: white; }
+  .modal-body { padding: 14px 16px; }
+  .chat-bubble {
+    background: var(--gray-100); border-radius: 12px 12px 12px 4px;
+    padding: 10px 12px; font-size: 0.82rem; color: var(--gray-700);
+    line-height: 1.5; margin-bottom: 12px;
+  }
+  .modal-langs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .modal-lang-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green-50); border: 1px solid #c8ddd2; color: var(--green-800);
+    padding: 5px 12px; border-radius: 30px; font-size: 0.75rem; font-weight: 500;
+    cursor: pointer; transition: all 0.15s; border: none;
+  }
+  .modal-lang-btn:hover { background: var(--green-600); color: white; }
+  .modal-lang-btn i { font-size: 0.68rem; }
+  .modal-action {
+    background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 10px;
+    padding: 10px 12px; font-size: 0.78rem; color: var(--gray-600); display: flex; align-items: center; gap: 8px;
+  }
+  .modal-action i { color: var(--green-500); font-size: 0.85rem; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 800px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+    .hero-visual { min-height: 180px; }
+    .tofin-section { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .container { padding: 0 16px; }
+  }
+</style>
 </head>
 <body>
 
-<div class="navbar">
-    <div class="container nav-flex">
-        <div class="logo">
-            <h1>Sô-Ava <span>Commune lacustre & numérique</span></h1>
-        </div>
-        <div class="nav-links">
-            <a href="#">Accueil</a>
-            <a href="#">Mairie</a>
-            <a href="#">Tourisme</a>
-            <a href="#">Opportunités</a>
-            <a href="#" class="btn-tfin"><i class="fas fa-microphone-alt"></i> TOFIN-BOT</a>
-        </div>
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a class="logo-mark" href="#">
+      <div class="logo-icon"><i class="fas fa-water"></i></div>
+      <div class="logo-text">
+        <span class="logo-name">Sô-Ava</span>
+        <span class="logo-sub">Commune lacustre & numérique</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#"><i class="fas fa-home" style="margin-right:5px;font-size:0.75rem;"></i> Accueil</a>
+      <a href="#"><i class="fas fa-landmark" style="margin-right:5px;font-size:0.75rem;"></i> Mairie</a>
+      <a href="#"><i class="fas fa-map-marked-alt" style="margin-right:5px;font-size:0.75rem;"></i> Tourisme</a>
+      <a href="#"><i class="fas fa-briefcase" style="margin-right:5px;font-size:0.75rem;"></i> Opportunités</a>
+      <a href="#" class="nav-cta"><i class="fas fa-microphone-alt"></i> TOFIN-BOT</a>
     </div>
-</div>
+  </div>
+</nav>
 
 <div class="container">
-    <!-- Hero section bannière dynamique -->
-    <div class="hero">
-        <div class="hero-grid">
-            <div class="hero-text">
-                <div class="hero-badge"><i class="fas fa-water"></i> Perle du lac Nokoué</div>
-                <h2>Valorisons ensemble <br>l'avenir de Sô‑Ava</h2>
-                <p>Plateforme digitale officielle : services publics, économie locale, tourisme et engagement jeunesse, avec un assistant vocal inclusif.</p>
-                <div class="btn-group">
-                    <a href="#" class="btn-primary"><i class="fas fa-arrow-right"></i> Explorer les services</a>
-                    <a href="#" class="btn-outline"><i class="fas fa-headset"></i> Activer TOFIN-BOT</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <i class="fas fa-camera" style="font-size: 2rem; margin-right: 8px;"></i>  Sô-Ava, entre traditions et modernité
-            </div>
-        </div>
-    </div>
 
-    <!-- Actualités récentes -->
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge"><i class="fas fa-water"></i> Perle du lac Nokoué</div>
+        <h1 class="hero-title">Valorisons ensemble<br>l'avenir de Sô‑Ava</h1>
+        <p class="hero-desc">Plateforme digitale officielle : services publics, économie locale, tourisme et engagement jeunesse, avec un assistant vocal inclusif.</p>
+        <div class="btn-row">
+          <a href="#" class="btn-primary"><i class="fas fa-compass"></i> Explorer les services</a>
+          <a href="#" class="btn-ghost"><i class="fas fa-headset"></i> Activer TOFIN-BOT</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <i class="fas fa-water"></i>
+        <p>Sô-Ava, entre traditions et modernité</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMMUNE DESCRIPTION ── -->
+  <div class="commune-banner">
+    <div class="commune-icon"><i class="fas fa-map-marker-alt"></i></div>
+    <p><strong>Sô-Ava : commune lacustre du Bénin</strong> — berceau de la culture tofin, villages sur pilotis, richesses artisanales et jeunesse dynamique. Une destination entre tradition et innovation numérique.</p>
+  </div>
+
+  <!-- ── ACTUALITÉS ── -->
+  <div class="section-head">
+    <div class="section-eyebrow"><i class="fas fa-newspaper"></i> Dernières nouvelles</div>
+    <h2 class="section-title">Actualités récentes</h2>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-thumb green"><i class="fas fa-seedling"></i></div>
+      <div class="news-body">
+        <div class="news-meta">
+          <div class="news-date"><i class="fas fa-calendar"></i> 15 avril 2026</div>
+          <span class="news-tag">Jeunesse</span>
+        </div>
+        <h3>Lancement du programme PTA 2026 – Mairie des Jeunes</h3>
+        <p>Appel à projets pour les jeunes entrepreneurs et acteurs culturels de la commune.</p>
+        <a href="#" class="news-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-thumb blue"><i class="fas fa-ship"></i></div>
+      <div class="news-body">
+        <div class="news-meta">
+          <div class="news-date"><i class="fas fa-calendar"></i> 8 avril 2026</div>
+          <span class="news-tag">Tourisme</span>
+        </div>
+        <h3>FESTILAC 2026 : Sô-Ava accueille le festival des cultures lacustres</h3>
+        <p>Réservations guides et circuits disponibles sur la plateforme Tourisme.</p>
+        <a href="#" class="news-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-thumb amber"><i class="fas fa-store"></i></div>
+      <div class="news-body">
+        <div class="news-meta">
+          <div class="news-date"><i class="fas fa-calendar"></i> 1 avril 2026</div>
+          <span class="news-tag">Commerce</span>
+        </div>
+        <h3>Nouvelle marketplace artisanale en ligne</h3>
+        <p>Les produits de pêche et artisanat local désormais disponibles avec paiement Mobile Money.</p>
+        <a href="#" class="news-link">Lire l'article <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ACCÈS RAPIDE ── -->
+  <div class="section-head" style="margin-top:2.2rem;">
+    <div class="section-eyebrow"><i class="fas fa-bolt"></i> Navigation rapide</div>
+    <h2 class="section-title">Accès rapide aux services</h2>
+  </div>
+  <div class="quick-grid">
+    <a href="#" class="q-chip"><i class="fas fa-id-card"></i> État civil</a>
+    <a href="#" class="q-chip"><i class="fas fa-city"></i> Urbanisme</a>
+    <a href="#" class="q-chip"><i class="fas fa-coins"></i> Fiscalité</a>
+    <a href="#" class="q-chip"><i class="fas fa-briefcase"></i> Opportunités</a>
+    <a href="#" class="q-chip"><i class="fas fa-shopping-bag"></i> Marketplace</a>
+    <a href="#" class="q-chip"><i class="fas fa-route"></i> Circuits touristiques</a>
+    <a href="#" class="q-chip"><i class="fas fa-users"></i> Mairie des Jeunes</a>
+    <a href="#" class="q-chip"><i class="fas fa-file-alt"></i> Documents officiels</a>
+  </div>
+
+  <!-- ── 7 MODULES ── -->
+  <div class="section-head">
+    <div class="section-eyebrow"><i class="fas fa-th-large"></i> Architecture</div>
+    <h2 class="section-title">La plateforme en 7 modules clés</h2>
+  </div>
+  <div class="modules-grid">
+    <a href="#" class="module-card">
+      <div class="mod-head">
+        <div class="mod-icon g1"><i class="fas fa-home"></i></div>
+        <span class="mod-num">MODULE 01</span>
+      </div>
+      <h3>Accueil</h3>
+      <p>Bannière dynamique, actualités, orientation rapide et accès TOFIN-BOT.</p>
+      <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="#" class="module-card">
+      <div class="mod-head">
+        <div class="mod-icon g2"><i class="fas fa-landmark"></i></div>
+        <span class="mod-num">MODULE 02</span>
+      </div>
+      <h3>Mairie centrale</h3>
+      <p>Mot du Maire, état civil, urbanisme, fiscalité, documents officiels.</p>
+      <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="#" class="module-card">
+      <div class="mod-head">
+        <div class="mod-icon g3"><i class="fas fa-users"></i></div>
+        <span class="mod-num">MODULE 03</span>
+      </div>
+      <h3>Mairie des Jeunes</h3>
+      <p>Programme PTA 2026, rapports, projets, galerie et tableau de suivi.</p>
+      <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="#" class="module-card">
+      <div class="mod-head">
+        <div class="mod-icon g4"><i class="fas fa-map-marked-alt"></i></div>
+        <span class="mod-num">MODULE 04</span>
+      </div>
+      <h3>Tourisme</h3>
+      <p>Sites, circuits lacustres, festivals, réservation guide, carte interactive.</p>
+      <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="#" class="module-card">
+      <div class="mod-head">
+        <div class="mod-icon g5"><i class="fas fa-shopping-bag"></i></div>
+        <span class="mod-num">MODULE 05</span>
+      </div>
+      <h3>Marketplace</h3>
+      <p>Produits artisanaux, pêche, commandes et paiement Mobile Money.</p>
+      <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="#" class="module-card">
+      <div class="mod-head">
+        <div class="mod-icon g6"><i class="fas fa-chart-line"></i></div>
+        <span class="mod-num">MODULE 06</span>
+      </div>
+      <h3>Opportunités</h3>
+      <p>Emplois, bourses, formations, financements, alertes et moteur de recherche.</p>
+      <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="#" class="module-card">
+      <div class="mod-head">
+        <div class="mod-icon g7"><i class="fas fa-robot"></i></div>
+        <span class="mod-num">MODULE 07</span>
+      </div>
+      <h3>TOFIN-BOT</h3>
+      <p>Assistant vocal multilingue (Tofingbé, Fongbé, Français), lecture vocale inclusive.</p>
+      <span class="mod-arrow">Accéder <i class="fas fa-arrow-right"></i></span>
+    </a>
+  </div>
+
+  <!-- ── TOFIN-BOT ── -->
+  <div class="tofin-section">
     <div>
-        <h2 class="section-title">📰 Actualités récentes</h2>
-        <div class="news-grid">
-            <div class="news-card">
-                <div class="news-img" style="background: linear-gradient(120deg,#a1c4b0,#cfe3d6); display: flex; align-items: center; justify-content: center; color:#1e3c2c;"><i class="fas fa-calendar-alt fa-2x"></i></div>
-                <div class="news-content">
-                    <div class="news-date">15 avril 2026</div>
-                    <h3>Lancement du programme PTA 2026 – Mairie des Jeunes</h3>
-                    <p>Appel à projets pour les jeunes entrepreneurs et acteurs culturels de la commune.</p>
-                </div>
-            </div>
-            <div class="news-card">
-                <div class="news-img" style="background: linear-gradient(120deg,#b8d9c2,#d8ecdf); display: flex; align-items: center; justify-content: center;"><i class="fas fa-ship fa-2x"></i></div>
-                <div class="news-content">
-                    <div class="news-date">8 avril 2026</div>
-                    <h3>FESTILAC 2026 : Sô-Ava accueille le festival des cultures lacustres</h3>
-                    <p>Réservations guides et circuits disponibles sur la plateforme Tourisme.</p>
-                </div>
-            </div>
-            <div class="news-card">
-                <div class="news-img" style="background: linear-gradient(120deg,#e0d3b0,#f2e7cf); display: flex; align-items: center; justify-content: center;"><i class="fas fa-hand-holding-usd fa-2x"></i></div>
-                <div class="news-content">
-                    <div class="news-date">1 avril 2026</div>
-                    <h3>Nouvelle marketplace artisanale en ligne</h3>
-                    <p>Les produits de pêche et artisanat local désormais disponibles avec paiement Mobile Money.</p>
-                </div>
-            </div>
-        </div>
+      <div class="tofin-icon-wrap"><i class="fas fa-microphone-alt"></i></div>
+      <h3>TOFIN-BOT : L'assistant vocal pour tous</h3>
+      <p>Accédez aux décisions municipales, trouvez un service, ou naviguez sur la plateforme simplement en parlant Tofingbé, Fongbé ou Français.</p>
+      <div class="lang-pills">
+        <span class="lang-pill"><i class="fas fa-globe-africa"></i> Tofingbé</span>
+        <span class="lang-pill"><i class="fas fa-comment-dots"></i> Fongbé</span>
+        <span class="lang-pill"><i class="fas fa-flag"></i> Français</span>
+      </div>
     </div>
+    <div>
+      <button class="tofin-cta"><i class="fas fa-play-circle"></i> Écouter un extrait</button>
+    </div>
+  </div>
 
-    <!-- Présentation courte Sô-Ava -->
-    <div style="background: #eef3ef; border-radius: 1.5rem; padding: 1.8rem; margin: 1.5rem 0;">
-        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; justify-content: space-between;">
-            <div><i class="fas fa-map-marker-alt" style="font-size: 2rem; color:#2b6e4f;"></i></div>
-            <div><strong style="font-size: 1.2rem;">Sô-Ava : commune lacustre du Bénin</strong> — berceau de la culture tofin, villages sur pilotis, richesses artisanales et jeunesse dynamique. Une destination entre tradition et innovation numérique.</div>
-        </div>
-    </div>
+  <!-- ── BOTTOM CARDS ── -->
+  <div class="section-head">
+    <div class="section-eyebrow"><i class="fas fa-layer-group"></i> Vie locale</div>
+    <h2 class="section-title">Économie, opportunités & agenda</h2>
+  </div>
+  <div class="bottom-grid">
+    <a href="#" class="bot-card">
+      <div class="bot-card-icon store"><i class="fas fa-store"></i></div>
+      <h3>Marketplace locale</h3>
+      <p>Découvrez les produits de nos pêcheurs, artisans et commerçants. Commandez en ligne, payez par Mobile Money.</p>
+      <span class="bot-link">Voir le catalogue <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="#" class="bot-card">
+      <div class="bot-card-icon grad"><i class="fas fa-graduation-cap"></i></div>
+      <h3>Opportunités & financements</h3>
+      <p>Offres d'emploi, bourses, formations et financements. Abonnez-vous aux alertes pour ne rien rater.</p>
+      <span class="bot-link">Explorer les opportunités <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="#" class="bot-card">
+      <div class="bot-card-icon cal"><i class="fas fa-calendar-alt"></i></div>
+      <h3>Agenda communal</h3>
+      <p>Fêtes locales, réunions du conseil, ateliers jeunesse et événements touristiques à venir.</p>
+      <span class="bot-link">Voir les événements <i class="fas fa-arrow-right"></i></span>
+    </a>
+  </div>
 
-    <!-- ACCÈS RAPIDE + 7 MODULES (présentation structurelle) -->
-    <h2 class="section-title">⚡ Accès rapide aux services</h2>
-    <div class="quick-access">
-        <div class="quick-buttons">
-            <a href="#" class="qbtn"><i class="fas fa-id-card"></i> État civil</a>
-            <a href="#" class="qbtn"><i class="fas fa-city"></i> Urbanisme</a>
-            <a href="#" class="qbtn"><i class="fas fa-coins"></i> Fiscalité</a>
-            <a href="#" class="qbtn"><i class="fas fa-briefcase"></i> Opportunités</a>
-            <a href="#" class="qbtn"><i class="fas fa-store"></i> Marketplace</a>
-            <a href="#" class="qbtn"><i class="fas fa-umbrella-beach"></i> Circuits touristiques</a>
-        </div>
-    </div>
-
-    <!-- 7 Modules fonctionnels (vitrine pour les autorités) -->
-    <h2 class="section-title">📌 Notre plateforme en 7 modules clés</h2>
-    <div class="modules-grid">
-        <div class="module-card"><div class="module-icon"><i class="fas fa-home"></i></div><h3>1. Accueil</h3><p>Bannière dynamique, actualités, orientation rapide, accès TOFIN-BOT.</p></div>
-        <div class="module-card"><div class="module-icon"><i class="fas fa-landmark"></i></div><h3>2. Mairie centrale</h3><p>Mot du Maire, services d'état civil, urbanisme, fiscalité, documents officiels.</p></div>
-        <div class="module-card"><div class="module-icon"><i class="fas fa-users"></i></div><h3>3. Mairie des Jeunes</h3><p>Programme PTA 2026, rapports, projets, galerie et tableau de suivi.</p></div>
-        <div class="module-card"><div class="module-icon"><i class="fas fa-map-marked-alt"></i></div><h3>4. Tourisme</h3><p>Sites, circuits lacustres, festivals, réservation guide, carte interactive.</p></div>
-        <div class="module-card"><div class="module-icon"><i class="fas fa-shopping-cart"></i></div><h3>5. Marketplace</h3><p>Produits artisanaux, pêche, commandes, paiement Mobile Money, profils vendeurs.</p></div>
-        <div class="module-card"><div class="module-icon"><i class="fas fa-chart-line"></i></div><h3>6. Opportunités</h3><p>Emplois, bourses, formations, financements, alertes et moteur de recherche.</p></div>
-        <div class="module-card"><div class="module-icon"><i class="fas fa-robot"></i></div><h3>7. TOFIN-BOT</h3><p>Assistant vocal multilingue (Tofingbé, Fongbé, Français), lecture vocale, guidance inclusive.</p></div>
-    </div>
-
-    <!-- Aperçu TOFIN-BOT + inclusion -->
-    <div style="background: linear-gradient(115deg, #0f2d22, #1c4635); border-radius: 2rem; padding: 2rem; color: white; margin: 2rem 0;">
-        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between;">
-            <div>
-                <i class="fas fa-microphone-alt" style="font-size: 2.5rem; background: #ffffff30; padding: 12px; border-radius: 60px;"></i>
-                <h3 style="margin: 0.8rem 0 0.4rem;">TOFIN-BOT : L'assistant vocal pour tous</h3>
-                <p>Accédez aux décisions municipales, trouvez un service, ou naviguez sur la plateforme simplement en parlant Tofingbé, Fongbé ou Français.</p>
-                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                    <span class="hero-badge" style="background:#ffffff30; color:white;">🌍 Tofingbé</span>
-                    <span class="hero-badge" style="background:#ffffff30; color:white;">🗣️ Fongbé</span>
-                    <span class="hero-badge" style="background:#ffffff30; color:white;">🇫🇷 Français</span>
-                </div>
-            </div>
-            <div><button class="btn-primary" style="background: #ffcd7e; color:#1e3c2c; border: none;"><i class="fas fa-play"></i> Écouter un extrait</button></div>
-        </div>
-    </div>
-
-    <!-- Marketplace et Opportunités : avant-goût -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.8rem; margin-top: 1rem;">
-        <div style="background: white; border-radius: 1.5rem; padding: 1.5rem; border: 1px solid #dee6e2;">
-            <i class="fas fa-store" style="font-size: 2rem; color:#2b6e4f;"></i>
-            <h3>Marketplace locale</h3>
-            <p>Découvrez les produits de nos pêcheurs, artisans et commerçants. Commandez en ligne, payez par Mobile Money.</p>
-            <a href="#" style="color:#2b6e4f; font-weight: 600;">Voir le catalogue →</a>
-        </div>
-        <div style="background: white; border-radius: 1.5rem; padding: 1.5rem; border: 1px solid #dee6e2;">
-            <i class="fas fa-graduation-cap" style="font-size: 2rem; color:#2b6e4f;"></i>
-            <h3>Opportunités jeunes & financements</h3>
-            <p>Offres d'emploi, bourses, formations, financements. Abonnez-vous aux alertes pour ne rien rater.</p>
-            <a href="#" style="color:#2b6e4f; font-weight: 600;">Explorer les opportunités →</a>
-        </div>
-        <div style="background: white; border-radius: 1.5rem; padding: 1.5rem; border: 1px solid #dee6e2;">
-            <i class="fas fa-calendar-week" style="font-size: 2rem; color:#2b6e4f;"></i>
-            <h3>Agenda communal</h3>
-            <p>Fêtes locales, réunions du conseil, ateliers jeunesse, événements touristiques.</p>
-            <a href="#" style="color:#2b6e4f; font-weight: 600;">Voir tous les événements →</a>
-        </div>
-    </div>
-
-    <!-- Tableau de bord Mairie & indicateurs stratégiques -->
-    <div style="margin: 3rem 0 1rem; background: #eef2f0; border-radius: 1.5rem; padding: 1.8rem;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-            <div><i class="fas fa-chart-simple" style="font-size: 2rem;"></i><h3 style="margin-top: 8px;">📊 Indicateurs de suivi (dashboard Mairie)</h3>
-            <p>Suivi des visiteurs, transactions marketplace, utilisation TOFIN-BOT, et alertes SMS inclusives.</p></div>
-            <div><span class="qbtn"><i class="fas fa-tachometer-alt"></i> Tableau de bord admin</span></div>
-        </div>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-            <div style="background: white; border-radius: 1rem; padding: 0.8rem 1.2rem;"><i class="fas fa-eye"></i> 1240 visiteurs (avril)</div>
-            <div style="background: white; border-radius: 1rem; padding: 0.8rem 1.2rem;"><i class="fas fa-cart-shopping"></i> 56 commandes marketplace</div>
-            <div style="background: white; border-radius: 1rem; padding: 0.8rem 1.2rem;"><i class="fas fa-headset"></i> 342 interactions TOFIN-BOT</div>
-        </div>
-        <div class="quick-buttons" style="margin-top: 1rem;">
-            <span><i class="fas fa-sms"></i> Notifications SMS (alerte opportunités, rappels)</span>
-            <span><i class="fas fa-mobile-alt"></i> Version mobile ultra légère</span>
-            <span><i class="fas fa-download"></i> Mode hors connexion partiel</span>
-        </div>
-    </div>
 </div>
 
-<!-- Fixed TOFIN-BOT floating button -->
-<button class="tofin-float" id="tofinFloatBtn">
-    <i class="fas fa-comment-dots"></i>
-</button>
-
-<!-- Petite modale simulée pour démo TOFIN-BOT (simple message) -->
-<div id="tofinModal" style="position: fixed; bottom: 100px; right: 30px; background: white; border-radius: 1.5rem; box-shadow: 0 25px 40px rgba(0,0,0,0.2); width: 280px; display: none; z-index: 300; padding: 1rem; border-top: 5px solid #2b6e4f;">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <strong><i class="fas fa-robot"></i> TOFIN-BOT</strong>
-        <i id="closeModal" style="cursor: pointer;" class="fas fa-times"></i>
-    </div>
-    <p style="margin: 12px 0; font-size: 0.9rem;">"Mi do wa? (Que puis-je pour vous ?) Choisissez une langue :"</p>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-        <span style="background:#eef2f0; padding:4px 12px; border-radius: 40px; font-size:0.8rem;">🇫🇷 Français</span>
-        <span style="background:#eef2f0; padding:4px 12px; border-radius: 40px; font-size:0.8rem;">🗣️ Fongbé</span>
-        <span style="background:#eef2f0; padding:4px 12px; border-radius: 40px; font-size:0.8rem;">🌿 Tofingbé</span>
-    </div>
-    <div style="margin-top: 12px; background:#f1f5f9; padding: 8px; border-radius: 1rem; font-size:0.8rem;">
-        <i class="fas fa-play-circle"></i> "Obtenir un acte de naissance ? Dites-moi..."
-    </div>
-</div>
-
+<!-- ── FOOTER ── -->
 <footer>
-    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
-        <div><strong>Mairie de Sô-Ava</strong><br>Place des Martyrs, Sô-Ava<br>contact@soava.bj</div>
-        <div><strong>Partenaires</strong><br>Diaspora béninoise, Office Tourisme, Ministère de la Décentralisation</div>
-        <div><strong>Suivez-nous</strong><br><i class="fab fa-facebook"></i> <i class="fab fa-twitter"></i> <i class="fab fa-whatsapp"></i>  Infos légales</div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Mairie de Sô-Ava</h4>
+        <p>Place des Martyrs, Sô-Ava</p>
+        <p>Bénin, Département de l'Atlantique</p>
+        <a href="mailto:contact@soava.bj">contact@soava.bj</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">État civil & documents</a>
+        <a href="#">Urbanisme & permis</a>
+        <a href="#">Fiscalité locale</a>
+        <a href="#">Mairie des Jeunes</a>
+      </div>
+      <div class="footer-col">
+        <h4>Partenaires</h4>
+        <a href="#">Diaspora béninoise</a>
+        <a href="#">Office du Tourisme</a>
+        <a href="#">Ministère de la Décentralisation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Suivez-nous</h4>
+        <div class="social-row">
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+        </div>
+        <a href="#" style="margin-top:10px;">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
     </div>
-    <div class="container" style="text-align: center; margin-top: 2rem; font-size: 0.75rem;">© 2026 Commune de Sô-Ava – Plateforme inclusive, assistant vocal & opportunités locales</div>
+    <div class="footer-bottom">
+      © 2026 Commune de Sô-Ava — Plateforme inclusive, assistant vocal &amp; opportunités locales
+    </div>
+  </div>
 </footer>
 
+<!-- ── TOFIN-BOT FLOAT ── -->
+<button class="tofin-float-btn" id="floatBtn" title="Ouvrir TOFIN-BOT">
+  <i class="fas fa-comment-dots"></i>
+</button>
+
+<div class="tofin-modal" id="tofinModal">
+  <div class="modal-header">
+    <div class="modal-header-left">
+      <div class="modal-avatar"><i class="fas fa-robot"></i></div>
+      <div>
+        <h4>TOFIN-BOT</h4>
+        <div class="status"><span class="status-dot"></span> En ligne</div>
+      </div>
+    </div>
+    <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="modal-body">
+    <div class="chat-bubble">
+      <strong>Mi do wa ?</strong> (Que puis-je pour vous ?)<br>Choisissez votre langue pour continuer :
+    </div>
+    <div class="modal-langs">
+      <button class="modal-lang-btn"><i class="fas fa-flag"></i> Français</button>
+      <button class="modal-lang-btn"><i class="fas fa-comment-dots"></i> Fongbé</button>
+      <button class="modal-lang-btn"><i class="fas fa-globe-africa"></i> Tofingbé</button>
+    </div>
+    <div class="modal-action">
+      <i class="fas fa-microphone-alt"></i>
+      <span>« Obtenir un acte de naissance ? Dites-moi... »</span>
+    </div>
+  </div>
+</div>
+
 <script>
-    const floatBtn = document.getElementById('tofinFloatBtn');
-    const modal = document.getElementById('tofinModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    floatBtn.addEventListener('click', () => {
-        modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
-    });
-    closeModalBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
-    });
+  const floatBtn = document.getElementById('floatBtn');
+  const modal = document.getElementById('tofinModal');
+  const closeBtn = document.getElementById('closeModal');
+  floatBtn.addEventListener('click', () => {
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+  });
+  closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+  document.addEventListener('click', (e) => {
+    if (!modal.contains(e.target) && e.target !== floatBtn) modal.style.display = 'none';
+  });
 </script>
 </body>
 </html>
